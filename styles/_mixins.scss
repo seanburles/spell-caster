@@ -1,0 +1,9 @@
+@mixin smooth-scroll {
+    scroll-behavior: smooth;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

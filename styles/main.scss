@@ -1,0 +1,196 @@
+@use "mixins";
+@import "tailwindcss";
+
+:root {
+  /* Mystical Theme Palette */
+  --mystic-deep: #0f0c1a;
+  /* Deep void purple/black */
+  --mystic-dark: #1a1625;
+  /* Slightly lighter background */
+  --mystic-accent: #d4af37;
+  /* Muted Gold */
+  --mystic-highlight: #e6e6fa;
+  /* Pale Lavender */
+  --mystic-text: #f0f0f0;
+  /* Off-white text */
+  --mystic-muted: #a09dbd;
+  /* Muted purple-grey text */
+
+  --background: var(--mystic-deep);
+  --foreground: var(--mystic-text);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-serif: var(--font-cinzel);
+  --font-sans: var(--font-inter);
+
+  --color-mystic-deep: var(--mystic-deep);
+  --color-mystic-dark: var(--mystic-dark);
+  --color-mystic-accent: var(--mystic-accent);
+  --color-mystic-highlight: var(--mystic-highlight);
+  --color-mystic-muted: var(--mystic-muted);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  @include mixins.smooth-scroll;
+}
+
+/* React Datepicker Customization */
+.react-datepicker {
+  font-family: var(--font-sans) !important;
+  background-color: var(--mystic-dark) !important;
+  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  color: var(--mystic-text) !important;
+}
+
+.react-datepicker__header {
+  background-color: rgba(15, 12, 26, 0.8) !important;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+  border-top-left-radius: 1rem !important;
+  border-top-right-radius: 1rem !important;
+  padding-top: 1rem !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: var(--mystic-accent) !important;
+  font-family: var(--font-serif) !important;
+}
+
+.react-datepicker__day {
+  color: var(--mystic-text) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(212, 175, 55, 0.2) !important;
+    color: var(--mystic-accent) !important;
+  }
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background-color: var(--mystic-accent) !important;
+  color: var(--mystic-deep) !important;
+  font-weight: bold !important;
+}
+
+.react-datepicker__day--disabled {
+  color: var(--mystic-muted) !important;
+  opacity: 0.3;
+}
+
+.react-datepicker__time-container {
+  border-left: 1px solid rgba(212, 175, 55, 0.1) !important;
+}
+
+.react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+  border-radius: 0 1rem 1rem 0 !important;
+}
+
+.react-datepicker__time-list-item {
+  height: auto !important;
+  padding: 8px 0 !important;
+  color: var(--mystic-text) !important;
+
+  &:hover {
+    background-color: rgba(212, 175, 55, 0.2) !important;
+    color: var(--mystic-accent) !important;
+  }
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: var(--mystic-accent) !important;
+  color: var(--mystic-deep) !important;
+  font-weight: bold !important;
+}
+
+/* Input styling for pickers */
+.mystic-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mystic-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: var(--mystic-text);
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--mystic-accent);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  &::placeholder {
+    color: var(--mystic-muted);
+  }
+}
+
+/* Animations */
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-xy 15s ease infinite;
+}
+
+/* Contrast Helpers */
+.text-mystic-muted {
+  color: var(--mystic-muted);
+}
+
+.text-mystic-bright {
+  color: var(--mystic-text);
+}
+
+.border-mystic {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.bg-mystic-glass {
+  background: rgba(26, 22, 37, 0.8);
+  backdrop-filter: blur(12px);
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
