@@ -1,11 +1,24 @@
 import OpenAI from "openai";
 
-export const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// Lazy initialization to avoid build-time errors when env vars aren't available
+let openaiInstance: OpenAI | null = null;
+
+function getOpenAI(): OpenAI {
+  if (!openaiInstance) {
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      throw new Error("Missing credentials. Please pass an `apiKey`, or set the `OPENAI_API_KEY` environment variable.");
+    }
+    openaiInstance = new OpenAI({
+      apiKey,
+    });
+  }
+  return openaiInstance;
+}
 
 export async function generateTarotImage(cardName: string): Promise<string> {
   try {
+    const openai = getOpenAI();
     const response = await openai.images.generate({
       model: "dall-e-3",
       prompt: `A mystical tarot card illustration for "${cardName}". 
@@ -26,6 +39,7 @@ export async function generateTarotImage(cardName: string): Promise<string> {
 
 export async function generateSigil(intention: string, spellType: string): Promise<string> {
   try {
+    const openai = getOpenAI();
     const response = await openai.images.generate({
       model: "dall-e-3",
       prompt: `Create a mystical sigil symbol for "${intention}" (${spellType} spell).
@@ -49,6 +63,12 @@ export async function generateSigil(intention: string, spellType: string): Promi
 export async function generateRitual(data: any) {
   // Get current date for accurate lunar timing
   const currentDate = new Date().toISOString().split('T')[0]; // YYYY-MM-DD format
+  
+  // Calculate sun sign accurately from birth date
+  const { calculateSunSign, getSignElement } = await import("@/lib/utils");
+  const birthDate = data.dob ? new Date(data.dob) : null;
+  const sunSign = birthDate ? calculateSunSign(birthDate) : "Unknown";
+  const signElement = getSignElement(sunSign);
 
   const prompt = `
     You are a master mystic, astrologer, and ritual designer. Create a PREMIUM, deeply personalized ritual experience worth $30+.
@@ -56,6 +76,12 @@ export async function generateRitual(data: any) {
     CURRENT DATE: ${currentDate}
     
     User Data: ${JSON.stringify(data)}
+    
+    CRITICAL: The user's SUN SIGN has been calculated as: ${sunSign} (${signElement} element)
+    - You MUST use ${sunSign} consistently throughout the reading
+    - DO NOT guess or use a different sign
+    - All references to their sun sign, zodiac sign, or astrological sign must be ${sunSign}
+    - The elemental reading should reflect ${signElement} energy (Fire=action/passion, Earth=grounding/stability, Air=communication/clarity, Water=emotion/intuition)
     
     IMPORTANT: Generate the nameMeaning FIRST, completely independently from all other fields.
     
@@ -116,8 +142,8 @@ export async function generateRitual(data: any) {
         }
       },
       "astrology": {
-        "transitInfluence": "string (2-3 sentences about current Sun sign, Mercury, or other planetary influence affecting them. Not too technical, poetic)",
-        "elementalReading": "string (2-3 sentences about their energy signature based on sun sign + intention. Fire=action, Water=healing, Air=clarity, Earth=grounding)"
+        "transitInfluence": "string (2-3 sentences about current ${sunSign} energy, Mercury, or other planetary influence affecting them. Not too technical, poetic. MUST mention ${sunSign} specifically)",
+        "elementalReading": "string (2-3 sentences about their ${signElement} energy signature based on their ${sunSign} sun sign + intention. ${signElement === 'Fire' ? 'Fire=action/passion' : signElement === 'Water' ? 'Water=emotion/intuition' : signElement === 'Air' ? 'Air=communication/clarity' : 'Earth=grounding/stability'})"
       },
       "shadowWork": {
         "obstacle": "string (1-2 sentences: what might block their intention, gentle and empathetic)",
@@ -136,7 +162,7 @@ export async function generateRitual(data: any) {
         "country": "string (country name)",
         "regionDescription": "string (1-2 lines describing the broader region's energy)",
         "energyType": "love | career | healing | creativity | growth",
-        "whyItFits": "string (2-4 sentences explaining alignment with their intention and sun sign)",
+        "whyItFits": "string (2-4 sentences explaining alignment with their intention and ${sunSign} sun sign. MUST mention ${sunSign} specifically)",
         "powerDirection": "north | south | east | west",
         "altCities": ["string (2-4 alternative cities with similar energy)"],
         "avoidRegions": ["string (1-3 regions/areas to be cautious about)"],
@@ -176,6 +202,7 @@ export async function generateRitual(data: any) {
     - All dates and lunar phases should be realistic for current time period
   `;
 
+  const openai = getOpenAI();
   const completion = await openai.chat.completions.create({
     messages: [{ role: "system", content: prompt }],
     model: "gpt-4o-mini",

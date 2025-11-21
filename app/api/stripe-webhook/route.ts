@@ -1,9 +1,18 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { db } from "@/lib/firestore";
 
 export async function POST(req: Request) {
+    const stripe = getStripe();
+    
+    // Return early if Stripe isn't configured
+    if (!stripe) {
+        return NextResponse.json({ 
+            error: "Stripe webhook is not configured" 
+        }, { status: 503 });
+    }
+
     const body = await req.text();
     const signature = (await headers()).get("Stripe-Signature") as string;
 

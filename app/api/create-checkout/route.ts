@@ -1,9 +1,18 @@
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { getStripe } from "@/lib/stripe";
 import { quizSchema } from "@/lib/schema";
 
 export async function POST(req: Request) {
     try {
+        const stripe = getStripe();
+        
+        // Return early if Stripe isn't configured (checkout disabled)
+        if (!stripe) {
+            return NextResponse.json({ 
+                error: "Checkout is not currently available. Please use the debug endpoint." 
+            }, { status: 503 });
+        }
+
         const body = await req.json();
 
         // Validate input
