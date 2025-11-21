@@ -57,12 +57,28 @@ export async function generateRitual(data: any) {
     
     User Data: ${JSON.stringify(data)}
     
+    IMPORTANT: Generate the nameMeaning FIRST, completely independently from all other fields.
+    
+    NAME MEANING INSTRUCTIONS (CRITICAL - DO THIS FIRST):
+    - Look ONLY at the user's name: "${data.name}"
+    - Research the literal/historical meaning of the FIRST NAME and LAST NAME separately
+    - Combine these literal meanings into a single poetic phrase (3-8 words)
+    - DO NOT consider their spellType, intention, birth date, or any other field
+    - DO NOT use words related to prosperity, abundance, love, healing, etc. unless those words are literally part of the name's etymology
+    - Examples based purely on name meanings:
+      * "Sean" (God is gracious) + "Burles" (witty/joker) = "The gracious, clever one"
+      * "Gabriela" (God is my strength) + "Bohorquez" (look up actual meaning) = something based ONLY on those literal meanings
+    - The result should feel like a name interpretation, not a spell or intention reading
+    
     Based on their birth date, location, sun sign, intention, and spell type, craft a comprehensive mystical reading.
     Use the CURRENT DATE above to calculate accurate lunar phases and astrological transits.
     ALL dates must be in the FUTURE (after ${currentDate}).
     
     Return JSON matching this EXACT schema (all fields required):
     {
+      "nameMeaning": {
+        "overallVibe": "string (a poetic, mystical interpretation based PURELY on the literal/historical meaning of their first and last name. Blend the etymological meanings into a single evocative phrase like 'The gracious, clever one' or 'The witty one' or 'The jokester/playful poet'. Make it feel personal and meaningful, 3-8 words. MUST be based ONLY on name etymology - ignore spellType, intention, and all other fields completely.)"
+      },
       "ritual": { 
         "title": "string (poetic, evocative title, 3-6 words)",
         "paragraph": "string (120-180 words, poetic, symbolic, tailored to their sun sign and intention. Describe the ritual practice in beautiful, flowing language)",

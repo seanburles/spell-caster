@@ -54,18 +54,18 @@ export default function Hero() {
                 className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden"
             >
                 {/* Background Gradient */}
-                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-mystic-deep via-mystic-dark to-indigo-950 animate-gradient" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-mystic-deep via-mystic-dark to-mystic-deep" />
 
                 {/* Decorative Elements */}
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl -z-10 animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-amber-500/5 rounded-full blur-3xl -z-10 animate-pulse delay-1000" />
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#5ba3b0]/10 rounded-full blur-3xl -z-10 animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-[#d4a574]/5 rounded-full blur-3xl -z-10 animate-pulse delay-1000" />
 
                 <h1
                     ref={titleRef}
-                    className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-purple-200 drop-shadow-sm"
+                    className="text-5xl md:text-7xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-[#d4a574] to-[#5ba3b0] drop-shadow-sm"
                 >
                     Discover Your <br />
-                    <span className="italic font-serif text-amber-400">Sacred Ritual</span>
+                    <span className="italic font-serif text-[#d4a574]">Sacred Ritual</span>
                 </h1>
 
                 <p

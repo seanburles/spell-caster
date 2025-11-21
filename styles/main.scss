@@ -2,18 +2,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Mystical Theme Palette */
-  --mystic-deep: #0f0c1a;
-  /* Deep void purple/black */
-  --mystic-dark: #1a1625;
+  /* Refined Mystical Theme Palette */
+  --mystic-deep: #0d0a14;
+  /* Deep warm black */
+  --mystic-dark: #16121d;
   /* Slightly lighter background */
-  --mystic-accent: #d4af37;
-  /* Muted Gold */
-  --mystic-highlight: #e6e6fa;
-  /* Pale Lavender */
-  --mystic-text: #f0f0f0;
-  /* Off-white text */
-  --mystic-muted: #a09dbd;
+  --mystic-accent: #d4a574;
+  /* Warm rose gold accent */
+  --mystic-accent-secondary: #5ba3b0;
+  /* Deep teal accent */
+  --mystic-text: #f5f3f0;
+  /* Warm off-white text */
+  --mystic-muted: #9a8fa3;
   /* Muted purple-grey text */
 
   --background: var(--mystic-deep);
@@ -23,18 +23,18 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-serif: var(--font-cinzel);
+  --font-serif: var(--font-playfair);
   --font-sans: var(--font-inter);
 
   --color-mystic-deep: var(--mystic-deep);
   --color-mystic-dark: var(--mystic-dark);
   --color-mystic-accent: var(--mystic-accent);
-  --color-mystic-highlight: var(--mystic-highlight);
+  --color-mystic-accent-secondary: var(--mystic-accent-secondary);
   --color-mystic-muted: var(--mystic-muted);
 }
 
 body {
-  background: var(--background);
+  background: var(--mystic-deep);
   color: var(--foreground);
   font-family: var(--font-sans);
   @include mixins.smooth-scroll;
@@ -44,15 +44,15 @@ body {
 .react-datepicker {
   font-family: var(--font-sans) !important;
   background-color: var(--mystic-dark) !important;
-  border: 1px solid rgba(212, 175, 55, 0.2) !important;
+  border: 1px solid rgba(212, 165, 116, 0.2) !important;
   border-radius: 1rem !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
   color: var(--mystic-text) !important;
 }
 
 .react-datepicker__header {
-  background-color: rgba(15, 12, 26, 0.8) !important;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1) !important;
+  background-color: rgba(13, 10, 20, 0.8) !important;
+  border-bottom: 1px solid rgba(212, 165, 116, 0.1) !important;
   border-top-left-radius: 1rem !important;
   border-top-right-radius: 1rem !important;
   padding-top: 1rem !important;
@@ -70,7 +70,7 @@ body {
   transition: all 0.2s ease;
 
   &:hover {
-    background-color: rgba(212, 175, 55, 0.2) !important;
+    background-color: rgba(212, 165, 116, 0.2) !important;
     color: var(--mystic-accent) !important;
   }
 }
@@ -88,7 +88,7 @@ body {
 }
 
 .react-datepicker__time-container {
-  border-left: 1px solid rgba(212, 175, 55, 0.1) !important;
+  border-left: 1px solid rgba(212, 165, 116, 0.1) !important;
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
@@ -101,7 +101,7 @@ body {
   color: var(--mystic-text) !important;
 
   &:hover {
-    background-color: rgba(212, 175, 55, 0.2) !important;
+    background-color: rgba(212, 165, 116, 0.2) !important;
     color: var(--mystic-accent) !important;
   }
 }
@@ -131,7 +131,7 @@ body {
   &:focus {
     outline: none;
     border-color: var(--mystic-accent);
-    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 0 2px rgba(212, 165, 116, 0.1);
     background: rgba(255, 255, 255, 0.05);
   }
 
@@ -174,8 +174,9 @@ body {
 }
 
 .bg-mystic-glass {
-  background: rgba(26, 22, 37, 0.8);
-  backdrop-filter: blur(12px);
+  background: rgba(13, 10, 20, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* 3D Flip Card Utilities */

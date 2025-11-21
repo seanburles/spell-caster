@@ -98,7 +98,7 @@ export default function CustomTimePicker({
                                         className={cn(
                                             "w-full text-left px-3 py-2 text-sm rounded-md transition-colors",
                                             isSelected
-                                                ? "bg-amber-500 text-slate-900 font-medium"
+                                                ? "bg-[#d4a574] text-slate-900 font-medium"
                                                 : "text-slate-300 hover:bg-slate-800 hover:text-white"
                                         )}
                                     >

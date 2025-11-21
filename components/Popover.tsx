@@ -21,7 +21,8 @@ export default function Popover({
 }: PopoverProps) {
     const popoverRef = React.useRef<HTMLDivElement>(null);
     const triggerRef = React.useRef<HTMLDivElement>(null);
-    const [position, setPosition] = React.useState({ top: 0, left: 0, width: 0, placement: "bottom" });
+    const [position, setPosition] = React.useState<{ top: number; left: number; width: number; placement: string } | null>(null);
+    const [isPositioned, setIsPositioned] = React.useState(false);
 
     const updatePosition = React.useCallback(() => {
         if (triggerRef.current) {
@@ -43,14 +44,22 @@ export default function Popover({
                     placement: "bottom",
                 });
             }
+            setIsPositioned(true);
         }
     }, []);
 
     React.useEffect(() => {
         if (isOpen) {
-            updatePosition();
+            setIsPositioned(false);
+            // Use requestAnimationFrame to ensure DOM is ready
+            requestAnimationFrame(() => {
+                updatePosition();
+            });
             window.addEventListener("resize", updatePosition);
             window.addEventListener("scroll", updatePosition, true);
+        } else {
+            setIsPositioned(false);
+            setPosition(null);
         }
         return () => {
             window.removeEventListener("resize", updatePosition);
@@ -86,11 +95,13 @@ export default function Popover({
             </div>
             {isOpen &&
                 typeof document !== "undefined" &&
+                position &&
                 createPortal(
                     <div
                         ref={popoverRef}
                         className={cn(
-                            "absolute z-[9999] p-1 rounded-xl border border-slate-700 bg-slate-900 shadow-2xl text-slate-100 animate-in fade-in zoom-in-95 duration-200",
+                            "absolute z-[9999] p-1 rounded-xl border border-slate-700 bg-slate-900 shadow-2xl text-slate-100",
+                            isPositioned ? "animate-in fade-in zoom-in-95 duration-200" : "opacity-0",
                             position.placement === "top" ? "-translate-y-full slide-in-from-bottom-2" : "slide-in-from-top-2",
                             className
                         )}

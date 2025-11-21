@@ -15,15 +15,15 @@ export default function FAQ() {
     ];
 
     return (
-        <section className="py-24 bg-white dark:bg-slate-950">
+        <section className="py-24 bg-mystic-dark">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl md:text-4xl font-serif font-medium text-center mb-16">Frequently Asked Questions</h2>
+                <h2 className="text-3xl md:text-4xl font-serif font-medium text-center mb-16 text-mystic-text">Frequently Asked Questions</h2>
 
                 <div className="space-y-8">
                     {faqs.map((faq, i) => (
-                        <div key={i} className="border-b border-slate-200 dark:border-slate-800 pb-8">
-                            <h3 className="text-xl font-medium mb-3">{faq.q}</h3>
-                            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{faq.a}</p>
+                        <div key={i} className="border-b border-white/10 pb-8">
+                            <h3 className="text-xl font-medium mb-3 text-mystic-text">{faq.q}</h3>
+                            <p className="text-mystic-muted leading-relaxed">{faq.a}</p>
                         </div>
                     ))}
                 </div>

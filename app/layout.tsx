@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Cinzel, Inter } from "next/font/google";
+import { Playfair_Display, Inter } from "next/font/google";
 import "../styles/main.scss";
 
-const cinzel = Cinzel({
-  variable: "--font-cinzel",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const inter = Inter({
@@ -25,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${cinzel.variable} ${inter.variable} antialiased`}
+        className={`${playfair.variable} ${inter.variable} antialiased`}
       >
         {children}
       </body>

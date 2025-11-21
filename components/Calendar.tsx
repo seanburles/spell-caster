@@ -27,7 +27,7 @@ function Calendar({
                 caption: "flex justify-center pt-1 relative items-center",
                 caption_label: "hidden",
                 caption_dropdowns: "flex justify-center gap-1",
-                dropdown: "bg-slate-900 border border-slate-700 rounded-md p-1 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500",
+                dropdown: "bg-slate-900 border border-slate-700 rounded-md p-1 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-[#d4a574]",
                 dropdown_month: "mr-2",
                 dropdown_year: "ml-2",
                 nav: "space-x-1 flex items-center",
@@ -47,7 +47,7 @@ function Calendar({
                 ),
                 day_range_end: "day-range-end",
                 day_selected:
-                    "bg-amber-500 text-slate-900 hover:bg-amber-500 hover:text-slate-900 focus:bg-amber-500 focus:text-slate-900 font-bold",
+                    "bg-[#d4a574] text-slate-900 hover:bg-[#d4a574] hover:text-slate-900 focus:bg-[#d4a574] focus:text-slate-900 font-bold",
                 day_today: "bg-slate-800 text-slate-100",
                 day_outside:
                     "day-outside text-slate-600 opacity-50 aria-selected:bg-slate-800/50 aria-selected:text-slate-500 aria-selected:opacity-30",
