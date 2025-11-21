@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { DayPicker } from "react-day-picker";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import "react-day-picker/dist/style.css";
 
@@ -32,7 +31,7 @@ function Calendar({
                 dropdown_year: "ml-2",
                 nav: "space-x-1 flex items-center",
                 nav_button: cn(
-                    "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity text-slate-300 hover:text-white"
+                    "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 transition-opacity text-slate-300 hover:text-white [&>svg]:w-4 [&>svg]:h-4"
                 ),
                 nav_button_previous: "absolute left-1",
                 nav_button_next: "absolute right-1",
@@ -56,10 +55,6 @@ function Calendar({
                     "aria-selected:bg-slate-800 aria-selected:text-slate-100",
                 day_hidden: "invisible",
                 ...classNames,
-            }}
-            components={{
-                IconLeft: () => <ChevronLeft className="h-4 w-4" />,
-                IconRight: () => <ChevronRight className="h-4 w-4" />,
             }}
             {...props}
         />
