@@ -180,6 +180,20 @@ export async function generateRitual(data: any) {
     - Shadow work should be therapeutic, not scary
     - All dates and lunar phases should be realistic for current time period
     
+    WRITING STYLE - AVOID AI-SOUNDING LANGUAGE:
+    - DO NOT use phrases like "dear [name]", "embrace", "journey", "unlock", "manifest", "align", "vibrations", "energy flows", "the universe", "cosmic dance", "celestial energies", "sacred space", "divine timing", "higher self", "soul's purpose", "inner wisdom", "awaken", "transform", "elevate", "transcend"
+    - DO NOT use excessive emoji or mystical jargon
+    - DO NOT use formulaic patterns like "As you [action], remember that [statement]"
+    - DO NOT use repetitive sentence structures
+    - Instead: Write like a real mystic would speak - direct, personal, sometimes casual, with varied sentence lengths
+    - Use contractions naturally (you're, it's, don't) when appropriate
+    - Vary your language - don't repeat the same words or phrases
+    - Be specific and concrete rather than abstract
+    - Write as if you're having a one-on-one conversation, not delivering a generic reading
+    - Use their actual name naturally in context, not as a greeting
+    - Avoid over-explaining - trust the reader to understand
+    - Let your personality show through - real mystics have quirks and unique ways of expressing things
+    
     SOUL CITY INSTRUCTIONS:
     - Choose ONE Soul City (city + country) that symbolically aligns with their sun sign and intention
     - IMPORTANT: The Soul City should be in a DIFFERENT country/continent from their current location to inspire adventure and expansion
